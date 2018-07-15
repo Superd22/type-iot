@@ -1,0 +1,23 @@
+{
+  "name": "type-iot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Superd22/type-iot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Superd22/type-iot/issues"
+  },
+  "homepage": "https://github.com/Superd22/type-iot#readme",
+  "dependencies": {
+    "routing-controllers": "^0.7.7",
+    "typedi": "^0.8.0"
+  }
+}
