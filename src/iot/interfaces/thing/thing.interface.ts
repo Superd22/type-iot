@@ -11,7 +11,7 @@ export interface Thing {
     /** items connected to this thing */
     items?: Item | Item[];
     /** actions available to do on this thing */
-    actions?: Action[];
+    actions?: { [ActionName: string]: Action };
 
     addItem(item: Item): void
 }

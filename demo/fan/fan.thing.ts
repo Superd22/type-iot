@@ -1,18 +1,13 @@
-import { FanItem } from './fan.item';
 import { HttpAction } from './../../src/iot/action/http-action.class';
-import { Action } from '../../src/iot/interfaces/actions/action.interface';
 import { ThingImplementation } from '../../src/iot/interfaces/thing/thing.class';
-import { Item } from '../../src/iot/interfaces/item/item.interface';
 
 export class FanThing extends ThingImplementation {
+    public get actions() { return this._actions; }
 
-    protected _items: FanItem[] = [
-        new FanItem(this, `fan-item`)
-    ]
-    protected _actions = [
-        new HttpAction<undefined, FanReturn>(`Get Status`, `Get the current status of the fan`, this._items, `/status`, "GET"),
-        new HttpAction<FanReturn, FanReturn>(`Set Status`, `Set the fan speed`, this._items, `/status`, "POST")
-    ];
+    protected _actions = {
+        get: new HttpAction<undefined, FanReturn>(`Get Status`, `Get the current status of the fan`, this._items, `/status`, "GET"),
+        set: new HttpAction<FanReturn, FanReturn>(`Set Status`, `Set the fan speed`, this._items, `/status`, "POST")
+    };
 
     constructor() {
         super(`http://192.168.1.21`);

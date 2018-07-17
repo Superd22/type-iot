@@ -17,6 +17,7 @@ export class HttpService {
 
     public post<T>(url: string, params?: {}, options?: CoreOptions) {
         options = this.makeOptions(options, params);
+        console.log("post", options);
         return RxHR.post<T>(url, options).pipe(
             map((data) => {
                 return data.body;

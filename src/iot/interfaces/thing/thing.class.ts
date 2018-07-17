@@ -2,13 +2,13 @@ import { Thing } from "./thing.interface";
 import { Item } from "../item/item.interface";
 import { Action } from "../actions/action.interface";
 
-export class ThingImplementation implements Thing {
+export abstract class ThingImplementation implements Thing {
     public get port() { return this._port; }
     public get items() { return this._items; }
     public get actions() { return this._actions; }
 
     protected _items: Item[] = [];
-    protected _actions: Action[] = [];
+    protected _actions;
 
     /**
      * Create a new thing

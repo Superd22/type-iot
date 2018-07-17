@@ -5,6 +5,8 @@ import { ActionCallback } from './action-callback.interface';
  * It can be linked to an item and have parameters
  */
 export interface Action<Parameters = any> {
+    /** unique id of this action */
+    id: string;
     /** optional action name */
     name?: string;
     /** optional action description */
