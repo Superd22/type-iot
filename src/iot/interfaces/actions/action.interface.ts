@@ -20,4 +20,5 @@ export interface Action<Parameters = any> {
      * @param target the target(s) on which to trigger the action (default to the availableTargets of the action)
     */
     trigger(params?: Parameters, target?: Item[]): ActionCallback
+    trigger(params?: Parameters, target?: string[]): ActionCallback
 }

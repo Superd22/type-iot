@@ -8,7 +8,5 @@ import { Room } from '../../src/iot/interfaces/room/room.interface';
 export class FanItem extends ItemImplementation {
     constructor(thing: FanThing, name: string, room?: Room) {
         super("FAN", thing, name, room);
-        console.log(thing);
-        thing.addItem(this);
     }
 }

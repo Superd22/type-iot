@@ -22,12 +22,21 @@ export enum ShutterMoveDirection {
 
 export class ShutterMoveAction extends HttpAction<ShutterMoveDirection[], void> {
     protected buildParameters(parameters: ShutterMoveDirection[], items: Item[]) {
+        // We have a mismatch between the move and the targets
         if (parameters.length != items.length && parameters.length != 1) throw new Error(`Didn't send enough parameters`);
+
         const ret: { [channel: number]: ShutterMoveDirection } = {};
-        items.map((item, index) => {
-            const direction = parameters.length === 1 ? parameters[0] : parameters[index];
-            ret[item.name] = direction;
-        });
+
+        // We wanted a few targets, so target them individually
+        if (items.length !== this._availableTargets.length)
+            items.map((item, index) => {
+                const direction = parameters.length === 1 ? parameters[0] : parameters[index];
+                ret[item.name] = direction;
+            });
+        else {
+            // We wanna move all of them in one direction
+            ret[5] = parameters[0];
+        }
 
         return ret;
     }

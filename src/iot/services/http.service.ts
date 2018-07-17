@@ -1,7 +1,8 @@
 import { Service } from "typedi";
 import { CoreOptions } from "request";
 import { RxHR } from "@akanass/rx-http-request";
-import { map } from "rxjs/operators";
+import { map, catchError } from "rxjs/operators";
+import { of } from "rxjs";
 
 @Service()
 export class HttpService {
@@ -10,6 +11,10 @@ export class HttpService {
         return RxHR.get<T>(url, options).pipe(
             map((data) => {
                 return data.body;
+            }),
+            catchError((err, caught) => {
+                console.error(`HTTP Error`, err);
+                return of(true);
             })
         );
     }
@@ -17,10 +22,13 @@ export class HttpService {
 
     public post<T>(url: string, params?: {}, options?: CoreOptions) {
         options = this.makeOptions(options, params);
-        console.log("post", options);
         return RxHR.post<T>(url, options).pipe(
             map((data) => {
                 return data.body;
+            }),
+            catchError((err, caught) => {
+                console.error(`HTTP Error`, err);
+                return of(true);
             })
         );
     }

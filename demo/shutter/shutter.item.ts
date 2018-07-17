@@ -5,6 +5,5 @@ import { Room } from "../../src/iot/interfaces/room/room.interface";
 export class ShutterItem extends ItemImplementation {
     constructor(thing: ShutterThing, channel: string, room?: Room) {
         super("SHUTTER", thing, channel, room);
-        thing.addItem(this);
     }
 }
