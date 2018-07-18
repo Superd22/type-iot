@@ -10,12 +10,14 @@ import { useContainer } from "routing-controllers";
 export class Server {
     constructor() {
         useContainer(Container);
-        createExpressServer({
+        const app = createExpressServer({
             controllers: [
                 __dirname + "/../controllers/**/**.ts"
             ],
+            cors: true,
             middlewares: [CircularMiddleware],
         }).listen(3000); // register controllers routes in our express application
+
         console.log(__dirname + "/../controllers/**.controller.ts");
         console.log(`Server ready on :3000`);
     }

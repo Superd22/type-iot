@@ -13,6 +13,6 @@ export class RoomController {
     public getItemInRoom(@Param("roomId") roomId: string) {
         const room = this._roomService.getRoom(roomId);
         if (!room) return;
-        return room.items.map(item => { return { id: item.id, name: item.name, type: item.type, actions: item.actions.map(action => { return { id: action.id, name: action.name, description: action.description } }) } });
+        return { id: room.id, name: room.name, items: room.items.map(item => { return { id: item.id, name: item.name, type: item.type, actions: item.actions.map(action => { return { id: action.id, name: action.name, description: action.description } }) } }) };
     }
 }

@@ -14,7 +14,7 @@ export class HttpService {
             }),
             catchError((err, caught) => {
                 console.error(`HTTP Error`, err);
-                return of(true);
+                return of({} as any);
             })
         );
     }
@@ -28,7 +28,7 @@ export class HttpService {
             }),
             catchError((err, caught) => {
                 console.error(`HTTP Error`, err);
-                return of(true);
+                return of({} as any);
             })
         );
     }
